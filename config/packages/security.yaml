@@ -4,6 +4,8 @@ security:
             entity:
                 class: App\Entity\User
                 property: username
+    password_hashers:
+        Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface: 'auto'
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/

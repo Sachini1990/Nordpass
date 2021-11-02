@@ -2,23 +2,20 @@
 
 namespace App\Tests;
 
+use App\Entity\User;
 use App\Repository\ItemRepository;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
 class ItemControllerTest extends WebTestCase
 {
     private $user;
+    private $entityManager;
 
     /**
      * @var
      */
     private $client;
-
-    /**
-     * @var UserRepository
-     */
-    private $userRepository;
 
     /**
      * @var ItemRepository
@@ -28,10 +25,14 @@ class ItemControllerTest extends WebTestCase
     public function setUp(): void
     {
         $this->client = static::createClient();
-        $this->userRepository = static::$container->get(UserRepository::class);
-        $this->itemRepository = static::$container->get(ItemRepository::class);
+        $this->itemRepository = static::getContainer()->get(ItemRepository::class);
+        $this->entityManager = static::getContainer()->get(EntityManagerInterface::class);
 
-        $this->user = $this->userRepository->findOneByUsername('john');
+        $this->user = new User();
+        $this->user->setUsername('Ana' . rand(999, 999999));
+        $this->user->setPassword('AnaPassword');
+        $this->entityManager->persist($this->user);
+        $this->entityManager->flush();
     }
 
     public function testCreate(): void
