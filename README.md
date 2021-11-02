@@ -22,6 +22,6 @@ make tests
 You can import all available API calls to Postman using `postman_collection.json` file
 
 ## Documentation URL
-https://documenter.postman.com/preview/2675083-264778e2-e5c6-4167-b53e-d20bb43c44a4?environment=&versionTag=latest&apiName=CURRENT&version=latest&documentationLayout=classic-double-column&right-sidebar=303030&top-bar=FFFFFF&highlight=EF5B25
+https://documenter.getpostman.com/view/2675083/TzeRoVKe
 
 Postman collection can be imported from the file `NordPass_PHP_test.postman_collection.json `
